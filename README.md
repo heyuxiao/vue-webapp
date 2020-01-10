@@ -110,4 +110,34 @@ npm install axios -S
 * 配置端口，跨域代理等等
 [vue.config.js](https://cli.vuejs.org/zh/config/#vue-config-js)
 
+#### rem移动端布局 (root)
+
+* 在public目录下创建rem.js文件
+```
+function resetRootFZ(){
+  var oHtml = document.querySelector('html');
+  var w = oHtml.getBoundingClientRect().width;
+  // 设置根字体的大小等于html节点的宽度的十分之一
+  oHtml.style.fontSize = w/10 + 'px';
+  // console.log(oHtml.style.fontSize)
+};
+
+resetRootFZ();
+
+// 当window窗口尺寸变化时，重新设置根字体的大小
+window.addEventListener('resize',function(){
+  resetRootFZ();
+});
+
+```
+* 在public目录的index.html中引入
+```
+<script type="text/javascript" src="./rem.js"></script>
+```
+* 把根字体设置成html宽度的十分之一,1rem = 屏幕宽度的1/10
+* 在编辑器中安装px转换rem的插件，并设置其fontSize=75，在写代码时就可以自动地把px单位转化成rem单位。
+* [教程：VScode中如何将px转rem](https://blog.csdn.net/wjnf012/article/details/92074232)
+
+
+
 
